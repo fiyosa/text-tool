@@ -1,0 +1,213 @@
+/* Base Styles */
+.crypto-app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 2rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.app-title {
+  text-align: center;
+  color: #2c3e50;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* Tab Navigation */
+.tab-container {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background: #4a6baf;
+  color: white;
+}
+
+.tab-button:hover:not(.active) {
+  background: #e0e0e0;
+}
+
+/* Input Groups */
+.crypto-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #4a6baf;
+}
+
+.text-input,
+.text-output {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 2.5rem;
+  max-height: 5rem;
+  line-height: 1.5;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #4a6baf;
+  box-shadow: 0 0 0 2px rgba(74, 107, 175, 0.2);
+}
+
+.text-output {
+  background-color: #f9f9f9;
+  color: #555;
+}
+
+.key-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  height: auto;
+}
+
+/* Copy Button & Tooltip */
+.copy-container {
+  position: relative;
+  display: inline-block;
+}
+
+.action-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-button {
+  background: #f0ad4e;
+  color: white;
+}
+
+.copy-button:hover {
+  opacity: 0.9;
+}
+
+.copy-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.tooltip {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Ensure number input looks consistent with other inputs */
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Remove spinner controls in Chrome/Safari */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Keep existing key-input styles */
+.key-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Radio button styles */
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.radio-option input[type='radio'] {
+  margin: 0;
+  cursor: pointer;
+  margin-right: 2px;
+}
+
+.radio-option span {
+  font-weight: normal;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .crypto-app {
+    padding: 1rem;
+  }
+
+  .tab-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .crypto-section {
+    padding: 1rem;
+  }
+}
