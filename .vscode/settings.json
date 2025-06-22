@@ -6,6 +6,7 @@
   "search.exclude": {
     "**/node_modules/**": true,
     "**/vendor/**": true,
+    "**/docs/**": true,
     "*lock.json": true,
     "*.lock": true
   }
