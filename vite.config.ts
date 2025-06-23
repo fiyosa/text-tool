@@ -6,10 +6,25 @@ export default defineConfig({
   plugins: [react()],
   base: '/cryptojs/',
 
+  server: {
+    port: 3000,
+    host: 'localhost',
+  },
+
+  preview: {
+    port: 3001,
+    host: 'localhost',
+  },
+
+  esbuild: {
+    legalComments: 'none',
+    drop: ['console'],
+  },
+
   build: {
     outDir: 'docs',
     emptyOutDir: true,
-    manifest: true,
+    manifest: false,
     rollupOptions: {
       output: {
         entryFileNames: 'main.js',
