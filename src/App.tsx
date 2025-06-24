@@ -3,9 +3,12 @@ import Encrypt from './pages/Encrypt'
 import Decrypt from './pages/Decrypt'
 import DecryptID from './pages/DecryptID'
 import EncryptID from './pages/EncryptID'
+import JsonFormatter from './pages/JsonFormatter'
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'encrypt' | 'decrypt' | 'encryptID' | 'decryptID'>('encrypt')
+  const [activeTab, setActiveTab] = useState<'encrypt' | 'decrypt' | 'encryptID' | 'decryptID' | 'JsonFormatter'>(
+    'encrypt'
+  )
 
   return (
     <div className="crypto-app">
@@ -36,6 +39,12 @@ export default function App() {
         >
           Decrypt ID
         </button>
+        <button
+          className={`tab-button ${activeTab === 'JsonFormatter' ? 'active' : ''}`}
+          onClick={() => setActiveTab('JsonFormatter')}
+        >
+          Json Formatter
+        </button>
       </div>
 
       <div style={{ display: activeTab === 'encrypt' ? 'block' : 'none' }}>
@@ -52,6 +61,10 @@ export default function App() {
 
       <div style={{ display: activeTab === 'decryptID' ? 'block' : 'none' }}>
         <DecryptID />
+      </div>
+
+      <div style={{ display: activeTab === 'JsonFormatter' ? 'block' : 'none' }}>
+        <JsonFormatter />
       </div>
     </div>
   )

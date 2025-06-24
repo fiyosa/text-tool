@@ -251,6 +251,15 @@ input[type='password']::-webkit-credentials-auto-fill-button {
 }
 
 /* ======================
+   Checkbox Spacing
+   ====================== */
+input[type='checkbox'] {
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+/* ======================
    Buttons & Actions
    ====================== */
 .action-button {
@@ -325,6 +334,7 @@ input[type='password']::-webkit-credentials-auto-fill-button {
    Number Input
    ====================== */
 input[type='number'] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
