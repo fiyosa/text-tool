@@ -4,11 +4,12 @@ import Decrypt from './pages/Decrypt'
 import DecryptID from './pages/DecryptID'
 import EncryptID from './pages/EncryptID'
 import JsonFormatter from './pages/JsonFormatter'
+import JsonCompare from './pages/JsonCompare'
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'encrypt' | 'decrypt' | 'encryptID' | 'decryptID' | 'JsonFormatter'>(
-    'encrypt'
-  )
+  const [activeTab, setActiveTab] = useState<
+    'encrypt' | 'decrypt' | 'encryptID' | 'decryptID' | 'JsonFormatter' | 'JsonCompare'
+  >('encrypt')
 
   return (
     <div className="crypto-app">
@@ -45,6 +46,12 @@ export default function App() {
         >
           Json Formatter
         </button>
+        <button
+          className={`tab-button ${activeTab === 'JsonCompare' ? 'active' : ''}`}
+          onClick={() => setActiveTab('JsonCompare')}
+        >
+          Json Compare
+        </button>
       </div>
 
       <div style={{ display: activeTab === 'encrypt' ? 'block' : 'none' }}>
@@ -65,6 +72,10 @@ export default function App() {
 
       <div style={{ display: activeTab === 'JsonFormatter' ? 'block' : 'none' }}>
         <JsonFormatter />
+      </div>
+
+      <div style={{ display: activeTab === 'JsonCompare' ? 'block' : 'none' }}>
+        <JsonCompare />
       </div>
     </div>
   )
