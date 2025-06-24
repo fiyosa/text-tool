@@ -51,12 +51,17 @@ body {
    ====================== */
 .tab-container {
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 0;
   gap: 0.5rem;
 }
 
 .tab-button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1rem;
   background: #f5f5f5;
   border: none;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
@@ -64,6 +69,9 @@ body {
   cursor: pointer;
   transition: var(--transition);
   margin: 0;
+  flex: 1;
+  min-width: max-content;
+  text-align: center;
 }
 
 .tab-button.active {

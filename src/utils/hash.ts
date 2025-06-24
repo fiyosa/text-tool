@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js'
 import Hashids from 'hashids'
+import * as bcrypt from 'bcryptjs'
 
 export function encrypt(plainText: string, secret: string): string {
   try {
@@ -88,4 +89,14 @@ export function decryptID(cipherText: string, secret: string, minLength: number)
   } catch (err: any) {
     return 'Error: ' + err?.message
   }
+}
+
+// ===============================================================
+
+export async function hashCreate(plainText: string, saltRounds: number): Promise<string> {
+  return bcrypt.hash(plainText, saltRounds)
+}
+
+export function hashCheck(plainText: string, hash: string): boolean {
+  return bcrypt.compareSync(plainText, hash)
 }

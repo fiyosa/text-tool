@@ -5,10 +5,12 @@ import DecryptID from './pages/DecryptID'
 import EncryptID from './pages/EncryptID'
 import JsonFormatter from './pages/JsonFormatter'
 import JsonCompare from './pages/JsonCompare'
+import HashCheck from './pages/HashCheck'
+import Hash from './pages/Hash'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<
-    'encrypt' | 'decrypt' | 'encryptID' | 'decryptID' | 'JsonFormatter' | 'JsonCompare'
+    'encrypt' | 'decrypt' | 'encryptID' | 'decryptID' | 'JsonFormatter' | 'JsonCompare' | 'hashCheck' | 'hash'
   >('encrypt')
 
   return (
@@ -39,6 +41,15 @@ export default function App() {
           onClick={() => setActiveTab('decryptID')}
         >
           Decrypt ID
+        </button>
+        <button className={`tab-button ${activeTab === 'hash' ? 'active' : ''}`} onClick={() => setActiveTab('hash')}>
+          Hash
+        </button>
+        <button
+          className={`tab-button ${activeTab === 'hashCheck' ? 'active' : ''}`}
+          onClick={() => setActiveTab('hashCheck')}
+        >
+          Hash Check
         </button>
         <button
           className={`tab-button ${activeTab === 'JsonFormatter' ? 'active' : ''}`}
@@ -76,6 +87,14 @@ export default function App() {
 
       <div style={{ display: activeTab === 'JsonCompare' ? 'block' : 'none' }}>
         <JsonCompare />
+      </div>
+
+      <div style={{ display: activeTab === 'hashCheck' ? 'block' : 'none' }}>
+        <HashCheck />
+      </div>
+
+      <div style={{ display: activeTab === 'hash' ? 'block' : 'none' }}>
+        <Hash />
       </div>
     </div>
   )

@@ -12,12 +12,14 @@
     "start": "vite preview --host"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "crypto-js": "^4.2.0",
     "hashids": "^2.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
     "@types/crypto-js": "^4.2.2",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
