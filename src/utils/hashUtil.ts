@@ -94,9 +94,9 @@ export function decryptID(cipherText: string, secret: string, minLength: number)
 // ===============================================================
 
 export async function hashCreate(plainText: string, saltRounds: number): Promise<string> {
-  return bcrypt.hash(plainText, saltRounds)
+  return await bcrypt.hash(plainText, saltRounds)
 }
 
-export function hashCheck(plainText: string, hash: string): boolean {
-  return bcrypt.compareSync(plainText, hash)
+export async function hashCheck(plainText: string, hash: string): Promise<boolean> {
+  return await bcrypt.compare(plainText, hash)
 }

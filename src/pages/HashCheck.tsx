@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { hash } from '../utils'
+import { hashUtil } from '../utils'
 
 export default function HashCheck() {
   const [_hashString, _setHashString] = useState('')
@@ -7,8 +7,13 @@ export default function HashCheck() {
   const [_result, _setResult] = useState<boolean | null>(null)
 
   useEffect(() => {
-    if (_hashString && _testString) {
-      _setResult(hash.hashCheck(_testString, _hashString))
+    if (_hashString.trim() && _testString.trim()) {
+      console.log(1)
+      ;(async () => {
+        console.log(2)
+        _setResult(await hashUtil.hashCheck(_testString, _hashString))
+      })()
+      console.log(3)
     } else {
       _setResult(null)
     }

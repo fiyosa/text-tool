@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { hash } from '../utils'
+import { hashUtil } from '../utils'
 
 export default function Encrypt() {
   const [_showTooltip, _setShowTooltip] = useState(false)
@@ -26,11 +26,11 @@ export default function Encrypt() {
     }
 
     if (_advanced) {
-      _setOutput(hash.encryptAdvance(_input.trim(), _secret.trim()))
+      _setOutput(hashUtil.encryptAdvance(_input.trim(), _secret.trim()))
       return
     }
 
-    _setOutput(hash.encrypt(_input.trim(), _secret.trim()))
+    _setOutput(hashUtil.encrypt(_input.trim(), _secret.trim()))
   }
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { hash } from '../utils'
+import { hashUtil } from '../utils'
 
 export default function Hash() {
   const [_input, _setInput] = useState('')
@@ -11,12 +11,12 @@ export default function Hash() {
   useEffect(() => {
     if (_input.trim()) {
       ;(async () => {
-        _setOutput(await hash.hashCreate(_input.trim(), _saltRounds))
+        _setOutput(await hashUtil.hashCreate(_input.trim(), _saltRounds))
       })()
     } else {
       _setOutput('')
     }
-  }, [_input, _saltRounds])
+  }, [_input, _saltRounds]) //
 
   const copyToClipboard = () => {
     if (_output) {

@@ -1,1 +1,1 @@
-export * as hash from './hash'
+export * as hashUtil from './hashUtil'
