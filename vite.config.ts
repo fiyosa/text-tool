@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ command }) => {
   return {
     plugins: [react()],
-    base: '/text-tool/', // optional
+    base: command === 'serve' ? '/' : '/text-tool/', // optional
 
     server: {
       port: 3000,

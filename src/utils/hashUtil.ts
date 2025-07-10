@@ -100,3 +100,21 @@ export async function hashCreate(plainText: string, saltRounds: number): Promise
 export async function hashCheck(plainText: string, hash: string): Promise<boolean> {
   return await bcrypt.compare(plainText, hash)
 }
+
+// ===============================================================
+
+export function bash64Enrypt(username: string, password: string): string {
+  const credentials = `${username}:${password}`
+  const encoded = btoa(credentials)
+  return `Basic ${encoded}`
+}
+
+export function base64Decrypt(authHeader: string): string {
+  try {
+    const base64Str = authHeader.startsWith('Basic ') ? authHeader.slice(6) : authHeader
+
+    return atob(base64Str.trim())
+  } catch (err) {
+    return `Decode failed: ${err instanceof Error ? err.message : String(err)}`
+  }
+}

@@ -7,10 +7,19 @@ import JsonFormatter from './pages/JsonFormatter'
 import JsonCompare from './pages/JsonCompare'
 import HashCheck from './pages/HashCheck'
 import Hash from './pages/Hash'
+import BasicAuth from './pages/BasicAuth'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<
-    'encrypt' | 'decrypt' | 'encryptID' | 'decryptID' | 'JsonFormatter' | 'JsonCompare' | 'hashCheck' | 'hash'
+    | 'encrypt'
+    | 'decrypt'
+    | 'encryptID'
+    | 'decryptID'
+    | 'JsonFormatter'
+    | 'JsonCompare'
+    | 'hashCheck'
+    | 'hash'
+    | 'basic-auth'
   >('encrypt')
 
   return (
@@ -63,6 +72,12 @@ export default function App() {
         >
           Json Compare
         </button>
+        <button
+          className={`tab-button ${activeTab === 'basic-auth' ? 'active' : ''}`}
+          onClick={() => setActiveTab('basic-auth')}
+        >
+          Basic Auth
+        </button>
       </div>
 
       <div style={{ display: activeTab === 'encrypt' ? 'block' : 'none' }}>
@@ -95,6 +110,10 @@ export default function App() {
 
       <div style={{ display: activeTab === 'hash' ? 'block' : 'none' }}>
         <Hash />
+      </div>
+
+      <div style={{ display: activeTab === 'basic-auth' ? 'block' : 'none' }}>
+        <BasicAuth />
       </div>
     </div>
   )
