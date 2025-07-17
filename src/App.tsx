@@ -5,9 +5,9 @@ import DecryptID from './pages/DecryptID'
 import EncryptID from './pages/EncryptID'
 import JsonFormatter from './pages/JsonFormatter'
 import JsonCompare from './pages/JsonCompare'
-import HashCheck from './pages/HashCheck'
-import Hash from './pages/Hash'
+import Bcrypt from './pages/Bcrypt'
 import BasicAuth from './pages/BasicAuth'
+import Htpasswd from './pages/Htpasswd'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<
@@ -15,11 +15,12 @@ export default function App() {
     | 'decrypt'
     | 'encryptID'
     | 'decryptID'
+    | 'bcrypt'
+    | 'basic-auth'
+    | 'htpasswd'
+    // ================================
     | 'JsonFormatter'
     | 'JsonCompare'
-    | 'hashCheck'
-    | 'hash'
-    | 'basic-auth'
   >('encrypt')
 
   return (
@@ -51,15 +52,27 @@ export default function App() {
         >
           Decrypt ID
         </button>
-        <button className={`tab-button ${activeTab === 'hash' ? 'active' : ''}`} onClick={() => setActiveTab('hash')}>
-          Hash
+        <button
+          className={`tab-button ${activeTab === 'bcrypt' ? 'active' : ''}`}
+          onClick={() => setActiveTab('bcrypt')}
+        >
+          Bcrypt
         </button>
         <button
-          className={`tab-button ${activeTab === 'hashCheck' ? 'active' : ''}`}
-          onClick={() => setActiveTab('hashCheck')}
+          className={`tab-button ${activeTab === 'basic-auth' ? 'active' : ''}`}
+          onClick={() => setActiveTab('basic-auth')}
         >
-          Hash Check
+          Basic Auth
         </button>
+        <button
+          className={`tab-button ${activeTab === 'htpasswd' ? 'active' : ''}`}
+          onClick={() => setActiveTab('htpasswd')}
+        >
+          Htpasswd
+        </button>
+
+        {/* =================================================== */}
+
         <button
           className={`tab-button ${activeTab === 'JsonFormatter' ? 'active' : ''}`}
           onClick={() => setActiveTab('JsonFormatter')}
@@ -71,12 +84,6 @@ export default function App() {
           onClick={() => setActiveTab('JsonCompare')}
         >
           Json Compare
-        </button>
-        <button
-          className={`tab-button ${activeTab === 'basic-auth' ? 'active' : ''}`}
-          onClick={() => setActiveTab('basic-auth')}
-        >
-          Basic Auth
         </button>
       </div>
 
@@ -104,16 +111,16 @@ export default function App() {
         <JsonCompare />
       </div>
 
-      <div style={{ display: activeTab === 'hashCheck' ? 'block' : 'none' }}>
-        <HashCheck />
-      </div>
-
-      <div style={{ display: activeTab === 'hash' ? 'block' : 'none' }}>
-        <Hash />
+      <div style={{ display: activeTab === 'bcrypt' ? 'block' : 'none' }}>
+        <Bcrypt />
       </div>
 
       <div style={{ display: activeTab === 'basic-auth' ? 'block' : 'none' }}>
         <BasicAuth />
+      </div>
+
+      <div style={{ display: activeTab === 'htpasswd' ? 'block' : 'none' }}>
+        <Htpasswd />
       </div>
     </div>
   )

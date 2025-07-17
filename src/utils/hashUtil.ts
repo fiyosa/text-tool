@@ -118,3 +118,52 @@ export function base64Decrypt(authHeader: string): string {
     return `Decode failed: ${err instanceof Error ? err.message : String(err)}`
   }
 }
+
+// ===============================================================
+
+// Apache MD5 Constants
+const APACHE_B64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+const APACHE_INDICES = [11, 4, 10, 5, 3, 9, 15, 2, 8, 14, 1, 7, 13, 0, 6, 12]
+
+function toApacheBase64(hashStr: string): string {
+  let result = ''
+  for (let i = 0; i < 16; i++) {
+    const byte = parseInt(hashStr.substr(APACHE_INDICES[i] * 2, 2), 16)
+    result += APACHE_B64.charAt(byte & 0x3f)
+  }
+  return result
+}
+
+function generateApacheHash(password: string, salt: string): string {
+  let hash = CryptoJS.MD5(password + salt + password).toString()
+
+  for (let i = 0; i < 1000; i++) {
+    let chunk = ''
+    if (i % 2 === 0) chunk += hash
+    if (i % 2 !== 0) chunk += password
+    if (i % 3 !== 0) chunk += salt
+    if (i % 7 !== 0) chunk += password
+    hash = CryptoJS.MD5(chunk).toString()
+  }
+
+  return hash
+}
+
+export function htpasswd(username: string, password: string): string {
+  const salt = CryptoJS.lib.WordArray.random(8 / 2).toString(CryptoJS.enc.Hex)
+  const hash = generateApacheHash(password, salt)
+  return `${username}:$apr1$${salt}$${toApacheBase64(hash)}`
+}
+
+export function htpasswdCheck(htpasswdEntry: string, password: string): boolean {
+  const hashPart = htpasswdEntry.includes(':') ? htpasswdEntry.split(':')[1] : htpasswdEntry
+  const parts = hashPart.split('$')
+
+  if (parts.length !== 4 || parts[1] !== 'apr1') return false
+
+  const salt = parts[2]
+  const originalHash = parts[3]
+  const newHash = generateApacheHash(password, salt)
+
+  return toApacheBase64(newHash) === originalHash
+}

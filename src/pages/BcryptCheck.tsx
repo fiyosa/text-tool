@@ -1,19 +1,16 @@
 import { useState, useEffect } from 'react'
 import { hashUtil } from '../utils'
 
-export default function HashCheck() {
+export default function BcryptCheck() {
   const [_hashString, _setHashString] = useState('')
   const [_testString, _setTestString] = useState('')
   const [_result, _setResult] = useState<boolean | null>(null)
 
   useEffect(() => {
     if (_hashString.trim() && _testString.trim()) {
-      console.log(1)
       ;(async () => {
-        console.log(2)
         _setResult(await hashUtil.hashCheck(_testString, _hashString))
       })()
-      console.log(3)
     } else {
       _setResult(null)
     }
