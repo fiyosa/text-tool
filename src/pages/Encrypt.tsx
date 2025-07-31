@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { hashUtil } from '../utils'
+import secret from '../config/secret'
 
 export default function Encrypt() {
   const [_showTooltip, _setShowTooltip] = useState(false)
@@ -8,7 +9,7 @@ export default function Encrypt() {
 
   const [_advanced, _setAdvanced] = useState(false)
   const [_input, _setInput] = useState('')
-  const [_secret, _setSecret] = useState('')
+  const [_secret, _setSecret] = useState(secret.VITE_HASH_KEY)
   const [_output, _setOutput] = useState('')
 
   const copyToClipboard = () => {

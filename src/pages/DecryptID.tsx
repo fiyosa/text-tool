@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { hashUtil } from '../utils'
+import secret from '../config/secret'
 
 export default function DecryptID() {
   const [_showTooltip, _setShowTooltip] = useState(false)
@@ -7,8 +8,8 @@ export default function DecryptID() {
 
   const [_showSecret, _setShowSecret] = useState(false)
   const [_input, _setInput] = useState('')
-  const [_secret, _setSecret] = useState('')
-  const [_minLength, _setMinLength] = useState(0)
+  const [_secret, _setSecret] = useState(secret.VITE_HASH_SALT)
+  const [_minLength, _setMinLength] = useState(secret.VITE_HASH_Length)
   const [_output, _setOutput] = useState('')
 
   const copyToClipboard = () => {
@@ -57,6 +58,7 @@ export default function DecryptID() {
           id="min-length"
           className="key-input"
           placeholder="Enter your padding length"
+          defaultValue={secret.VITE_HASH_Length}
           onChange={(e) => {
             // Remove any non-digit characters that might sneak through
             const numbersOnly = e.target.value.replace(/[^\d]/g, '')
