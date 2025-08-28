@@ -32,25 +32,13 @@ export default function App() {
           className={`tab-button ${activeTab === 'encrypt' ? 'active' : ''}`}
           onClick={() => setActiveTab('encrypt')}
         >
-          Encrypt
-        </button>
-        <button
-          className={`tab-button ${activeTab === 'decrypt' ? 'active' : ''}`}
-          onClick={() => setActiveTab('decrypt')}
-        >
-          Decrypt
+          Encryption
         </button>
         <button
           className={`tab-button ${activeTab === 'encryptID' ? 'active' : ''}`}
           onClick={() => setActiveTab('encryptID')}
         >
-          Encrypt ID
-        </button>
-        <button
-          className={`tab-button ${activeTab === 'decryptID' ? 'active' : ''}`}
-          onClick={() => setActiveTab('decryptID')}
-        >
-          Decrypt ID
+          Hash ID
         </button>
         <button
           className={`tab-button ${activeTab === 'bcrypt' ? 'active' : ''}`}
@@ -91,16 +79,8 @@ export default function App() {
         <Encrypt />
       </div>
 
-      <div style={{ display: activeTab === 'decrypt' ? 'block' : 'none' }}>
-        <Decrypt />
-      </div>
-
       <div style={{ display: activeTab === 'encryptID' ? 'block' : 'none' }}>
         <EncryptID />
-      </div>
-
-      <div style={{ display: activeTab === 'decryptID' ? 'block' : 'none' }}>
-        <DecryptID />
       </div>
 
       <div style={{ display: activeTab === 'JsonFormatter' ? 'block' : 'none' }}>
